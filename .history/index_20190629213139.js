@@ -12,7 +12,7 @@ function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xfcfff0);
 
-  camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,50);
+  camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,500);
   camera.rotation.y = 45/180*Math.PI;
   camera.position.x = 0;
   camera.position.y = 2;

@@ -46,7 +46,7 @@ function init() {
   let loader = new THREE.GLTFLoader();
   loader.load('./src/model/scene.gltf', function(gltf){
     mask = gltf.scene.children[0];
-    mask.scale.set(1.5,1.5,1.5);
+    mask.scale.set(1,1,1);
     scene.add(gltf.scene);
     animate();
   });

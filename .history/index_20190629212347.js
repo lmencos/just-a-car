@@ -10,7 +10,7 @@ let l4 = 1.8
 let scene, camera, renderer;
 function init() {
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xfcfff0);
+  scene.background = new THREE.Color(0xfff6ed);
 
   camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,50);
   camera.rotation.y = 45/180*Math.PI;
@@ -36,7 +36,7 @@ function init() {
   light3 = new THREE.PointLight(color,l4);
   light3.position.set(0,100,-500);
   scene.add(light3);
-  light4 = new THREE.PointLight(color,l4);
+  light4 = new THREE.PointLight(color,light4);
   light4.position.set(-500,300,500);
   scene.add(light4);
   renderer = new THREE.WebGLRenderer({antialias:true});
@@ -46,7 +46,7 @@ function init() {
   let loader = new THREE.GLTFLoader();
   loader.load('./src/model/scene.gltf', function(gltf){
     mask = gltf.scene.children[0];
-    mask.scale.set(1.5,1.5,1.5);
+    mask.scale.set(1,1,1);
     scene.add(gltf.scene);
     animate();
   });

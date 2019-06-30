@@ -1,42 +1,31 @@
-let color = 0xfffdfa
-let color1 = 0xfccf9f
-let color2 = 0xffa647
-
-let l1 = .5
-let l2 = .9
-let l3 = 1.2
-let l4 = 1.8
 
 let scene, camera, renderer;
 function init() {
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xfcfff0);
-
-  camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,50);
+  scene.background = new THREE.Color(0x49688f);
+  camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,5000);
   camera.rotation.y = 45/180*Math.PI;
-  camera.position.x = 0;
-  camera.position.y = 2;
-  camera.position.z = 4;
-
+  camera.position.x = 800;
+  camera.position.y = 100;
+  camera.position.z = 1000;
   controls = new THREE.OrbitControls(camera);
   controls.addEventListener('change', renderer);
-
-  hlight = new THREE.AmbientLight (color2,l1);
+  hlight = new THREE.AmbientLight (0x404040,100);
   scene.add(hlight);
-  directionalLight = new THREE.DirectionalLight(color2,l1);
+  directionalLight = new THREE.DirectionalLight(0xffffff,100);
   directionalLight.position.set(0,1,0);
   directionalLight.castShadow = true;
   scene.add(directionalLight);
-  light = new THREE.PointLight(color1,l2);
-  light.position.set(0,30,50);
+  light = new THREE.PointLight(0x49688f,10);
+  light.position.set(0,300,500);
   scene.add(light);
-  light2 = new THREE.PointLight(color2,l3);
-  light2.position.set(50,10,0);
+  light2 = new THREE.PointLight(0x49688f,10);
+  light2.position.set(500,100,0);
   scene.add(light2);
-  light3 = new THREE.PointLight(color,l4);
+  light3 = new THREE.PointLight(0x49688f,10);
   light3.position.set(0,100,-500);
   scene.add(light3);
-  light4 = new THREE.PointLight(color,l4);
+  light4 = new THREE.PointLight(0x49688f,10);
   light4.position.set(-500,300,500);
   scene.add(light4);
   renderer = new THREE.WebGLRenderer({antialias:true});
@@ -44,9 +33,9 @@ function init() {
   document.body.appendChild(renderer.domElement);
   
   let loader = new THREE.GLTFLoader();
-  loader.load('./src/model/scene.gltf', function(gltf){
+  loader.load('./src/model/PARAbOB.gltf', function(gltf){
     mask = gltf.scene.children[0];
-    mask.scale.set(1.5,1.5,1.5);
+    mask.scale.set(0.5,0.5,0.5);
     scene.add(gltf.scene);
     animate();
   });
